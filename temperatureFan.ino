@@ -28,37 +28,26 @@ while (1); // Dur!
  
 ust_servo.attach(9);
 alt_servo.attach(8);
- 
 ust_servo.write(120);
 delay(10);
 }
 void loop() {
-
 value = analogRead(lm35pin); 
 value = (value/1023)*5000; 
 Temperature = value/10;  
  
 data = Serial.read();
 delay(10);
-if ( data == '8')
-{
-durum = true;
- 
-}
- 
-if ( data =='9')
-{
-durum = false;
-}
- 
+
 if ( durum == true)
 {
 makine_baslat();
 }
-if ( durum == false)
+else 
 {
 makine_durdur();
 }
+ 
 }
  
 void makine_baslat()
@@ -73,7 +62,6 @@ delay(500);
 renk = renk_oku();
 delay(50);
 switch (renk) {
-
  Serial.print("Sicaklik : ");
  Serial.print (Temperature);
  Serial.println (" ^C");
@@ -85,14 +73,14 @@ Serial.println(1);
 break;
  }
 
-else if (Temperature>17 && Temperature<=20)
+else if ( Temperature<=20)
  {
 alt_servo.write(60);
 Serial.println(2);
 break; 
  }
 
-else if (Temperature>20 && Temperature<=25)
+else if ( Temperature<=25)
  {
 alt_servo.write(72);
 Serial.println(3);
