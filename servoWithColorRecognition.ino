@@ -2,16 +2,12 @@
 
 Servo horizontal; // Yatay Servo Motor
 int servoh = 90;   
-
 int servohLimitHigh = 180;
 int servohLimitLow = 65;
-
 Servo vertical;   // Dikey Servo 
 int servov = 90;    
-
 int servovLimitHigh = 120;
 int servovLimitLow = 15;
-
 
 int ldrlt = 2; // Sol Üst LDR Sensör Pini   
 int ldrrt = 3; //Sağ Üst LDR Sensör Pini
@@ -25,10 +21,6 @@ void setup()
   vertical.attach(10); // Dikey Ekseni Servo Motor Pini
   horizontal.write(180);
   vertical.write(45);
-
-
-
-  
 }
 
 void loop() 
@@ -48,7 +40,6 @@ void loop()
 
   int dvert = avt - avd; // Alt ve Üst Sensörlerin Farkı
   int dhoriz = avl - avr;// Sağ ve Sol Sensörlerin Farkı
-  
   
   Serial.print(avt);
   Serial.print(" ");
@@ -110,5 +101,4 @@ void loop()
   horizontal.write(servoh);
   }
    delay(dtime);
-
 }
